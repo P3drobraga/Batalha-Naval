@@ -515,3 +515,16 @@ footer{
         padding: 25px 18px;
     }
 }
+
+/* =========================
+   IMAGENS DAS CÉLULAS
+========================= */
+
+.imagemCelula{
+    width: 100%;
+    height: 100%;
+
+    object-fit: contain;
+
+    pointer-events: none;
+}

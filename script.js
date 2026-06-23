@@ -7,6 +7,13 @@ const nomeJogador = document.getElementById("nomeJogador");
 const btnEntrar = document.getElementById("btnEntrar");
 const btnNovoJogo = document.getElementById("novoJogo");
 
+const somAgua = new Audio("sounds/agua.mp3");
+const somBarco = new Audio("sounds/barco.mp3");
+const somBomba = new Audio("sounds/bomba.mp3");
+somAgua.volume = 0.3;
+somBarco.volume = 0.3;
+somBomba.volume = 0.3;
+
 const nomeExibido = document.getElementById("jogador");
 
 const tabuleiro = document.getElementById("tabuleiro");
@@ -60,6 +67,7 @@ let erros = 0;
 
 let bombasEncontradas = 0;
 let jogadas = 0;
+let jogoFinalizado = false;
 
 let segundos = 0;
 let intervaloTempo = null;
@@ -145,6 +153,8 @@ else {
     bombasEncontradas = 0;
 
     jogadas = 0;
+
+    jogoFinalizado = false;
 
     criarMatriz();
 
@@ -313,24 +323,14 @@ function atualizarPainel() {
 
 function clicarCelula(event) {
 
-    const celula = event.target;
+      const celula = event.currentTarget;
 
     if (celula.classList.contains("aberta")) {
-
         return;
-
     }
 
-    if (vidas <= 0) {
-
+    if (jogoFinalizado) {
         return;
-
-    }
-
-    if (acertos >= 12) {
-
-        return;
-
     }
 
     celula.classList.add("aberta");
@@ -345,7 +345,10 @@ function clicarCelula(event) {
 
     if (valor === AGUA) {
 
-        celula.textContent = "🌊";
+
+        mostrarImagem(celula, "agua.png", "Água");
+
+        tocarSom(somAgua);
 
         erros++;
 
@@ -355,7 +358,9 @@ function clicarCelula(event) {
 
     else if (valor === BARCO) {
 
-        celula.textContent = "🚢";
+        mostrarImagem(celula, "barco.png", "Barco");
+
+        tocarSom(somBarco);
 
         pontos += 10;
 
@@ -367,7 +372,9 @@ function clicarCelula(event) {
 
     else if (valor === BOMBA) {
 
-        celula.textContent = "💣";
+        mostrarImagem(celula, "bomba.png", "Bomba");
+
+        tocarSom(somBomba);
 
         vidas--;
 
@@ -388,6 +395,8 @@ function verificarFimDeJogo() {
 
     if (vidas <= 0) {
 
+        jogoFinalizado = true;
+
         pararCronometro();
 
         mensagem.textContent =
@@ -398,7 +407,9 @@ function verificarFimDeJogo() {
         return;
     }
 
-    if (acertos >= 12) {
+    if (acertos === 12) {
+
+        jogoFinalizado = true;
 
         pararCronometro();
 
@@ -407,8 +418,9 @@ function verificarFimDeJogo() {
 
         salvarRanking();
 
-        return;
     }
+
+
 
 }
 
@@ -445,6 +457,8 @@ function novoJogo() {
     bombasEncontradas = 0;
 
     jogadas = 0;
+
+    jogoFinalizado = false;
 
     criarMatriz();
 
@@ -508,7 +522,15 @@ function salvarRanking() {
 
     ranking.push(novoResultado);
 
-    ranking.sort((a, b) => b.pontos - a.pontos);
+    ranking.sort((a, b) => {
+
+    if (b.pontos !== a.pontos) {
+        return b.pontos - a.pontos;
+    }
+
+    return converterTempo(a.tempo) - converterTempo(b.tempo);
+
+});
 
     ranking = ranking.slice(0, 5);
 
@@ -569,5 +591,43 @@ function formatarDificuldade(nivel) {
     }
 
     return "Não informada";
+
+}
+
+function mostrarImagem(celula, nomeImagem, textoAlternativo) {
+
+    const imagem = document.createElement("img");
+
+    imagem.src = `img/${nomeImagem}`;
+
+    imagem.alt = textoAlternativo;
+
+    imagem.classList.add("imagemCelula");
+
+    celula.innerHTML = "";
+
+    celula.appendChild(imagem);
+
+}
+
+function tocarSom(som) {
+
+    som.currentTime = 0;
+
+    som.play().catch(() => {
+        console.log("O navegador bloqueou o som.");
+    });
+
+}
+
+function converterTempo(tempo) {
+
+    const partes = tempo.split(":");
+
+    const minutos = Number(partes[0]);
+
+    const segundos = Number(partes[1]);
+
+    return (minutos * 60) + segundos;
 
 }
