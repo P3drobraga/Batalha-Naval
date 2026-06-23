@@ -452,21 +452,49 @@ footer{
         padding: 15px;
     }
 
+    header{
+        margin-bottom: 20px;
+    }
+
     header h1{
         font-size: 2rem;
     }
 
+    #jogador{
+        font-size: 1rem;
+    }
+
     .painel{
-        flex-direction: column;
-        align-items: center;
+        display: grid;
+
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+
+        gap: 10px;
     }
 
     .info{
         width: 100%;
-        max-width: 300px;
+        min-width: 0;
+
+        padding: 12px;
+    }
+
+    .info h3{
+        font-size: 0.9rem;
+    }
+
+    .info span{
+        font-size: 1rem;
+    }
+
+    .area-jogo{
+        overflow-x: auto;
     }
 
     #tabuleiro{
+        width: 100%;
+        max-width: 620px;
+
         gap: 3px;
 
         padding: 10px;
@@ -476,14 +504,34 @@ footer{
         font-size: 20px;
     }
 
+    .mensagens,
+    .estatisticas,
+    .ranking{
+        padding: 16px;
+    }
+
+    .dados{
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+
+        gap: 8px;
+    }
+
+    .dados p{
+        padding: 9px;
+
+        font-size: 0.9rem;
+    }
+
     .controles{
         flex-direction: column;
-        align-items: center;
+
+        align-items: stretch;
+
+        gap: 10px;
     }
 
     .controles button{
         width: 100%;
-        max-width: 300px;
     }
 
     .caixaNome{
@@ -501,6 +549,14 @@ footer{
         padding: 10px;
     }
 
+    header h1{
+        font-size: 1.7rem;
+    }
+
+    .painel{
+        grid-template-columns: 1fr;
+    }
+
     #tabuleiro{
         gap: 2px;
 
@@ -508,11 +564,21 @@ footer{
     }
 
     .celula{
-        font-size: 16px;
+        border-radius: 4px;
+
+        font-size: 15px;
+    }
+
+    .dados{
+        grid-template-columns: 1fr;
     }
 
     .caixaNome{
         padding: 25px 18px;
+    }
+
+    .caixaNome h1{
+        font-size: 1.6rem;
     }
 }
 
