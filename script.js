@@ -76,7 +76,6 @@ window.addEventListener("load", mostrarRanking);
 function iniciarJogo() {
 const nome = nomeJogador.value.trim();
 
-
 if (nome === "") {
     alert("Digite seu nome.");
     return;
@@ -92,7 +91,6 @@ telaInicial.style.display = "none";
 
 prepararPartida("Jogo iniciado.");
 
-
 }
 
 function novoJogo() {
@@ -100,9 +98,7 @@ if (jogadorAtual === "") {
 return;
 }
 
-
 prepararPartida("Novo jogo iniciado.");
-
 
 }
 
@@ -113,24 +109,19 @@ acertos = 0;
 jogadas = 0;
 jogoFinalizado = false;
 
-
 criarMatriz();
 colocarElementos();
 desenharTabuleiro();
 atualizarPainel();
 esconderResultado();
-
 mensagem.classList.remove("mensagem-vitoria", "mensagem-derrota");
 mensagem.textContent = texto;
-
 iniciarCronometro();
-
 
 }
 
 function criarMatriz() {
 matriz = [];
-
 
 for (let linha = 0; linha < tamanho; linha++) {
     const novaLinha = [];
@@ -142,7 +133,6 @@ for (let linha = 0; linha < tamanho; linha++) {
     matriz.push(novaLinha);
 }
 
-
 }
 
 function colocarElementos() {
@@ -153,7 +143,6 @@ colocarAleatorio(BOMBA, niveis[dificuldadeAtual].bombas);
 function colocarAleatorio(tipo, quantidade) {
 let colocados = 0;
 
-
 while (colocados < quantidade) {
     const linha = Math.floor(Math.random() * tamanho);
     const coluna = Math.floor(Math.random() * tamanho);
@@ -163,7 +152,6 @@ while (colocados < quantidade) {
         colocados++;
     }
 }
-
 
 }
 
@@ -184,7 +172,6 @@ for (let linha = 0; linha < tamanho; linha++) {
         tabuleiro.appendChild(celula);
     }
 }
-
 
 }
 
@@ -215,25 +202,21 @@ if (valor === AGUA) {
 atualizarPainel();
 verificarFimDeJogo();
 
-
 }
 
 function abrirAgua(celula) {
 mostrarImagem(celula, "agua.png", "Água");
 celula.classList.add("animacao-agua");
 
-
 tocarSom(somAgua);
 
 mensagem.textContent = "Você encontrou água.";
-
 
 }
 
 function abrirBarco(celula) {
 mostrarImagem(celula, "barco.png", "Barco");
 celula.classList.add("animacao-barco");
-
 
 tocarSom(somBarco);
 
@@ -242,20 +225,17 @@ acertos++;
 
 mensagem.textContent = "Você acertou um barco.";
 
-
 }
 
 function abrirBomba(celula) {
 mostrarImagem(celula, "bomba.png", "Bomba");
 celula.classList.add("animacao-bomba");
 
-
 tocarSom(somBomba);
 
 vidas--;
 
 mensagem.textContent = "Você encontrou uma bomba.";
-
 
 }
 
@@ -271,17 +251,14 @@ finalizarJogo("derrota");
 return;
 }
 
-
 if (acertos === quantidadeBarcos) {
     finalizarJogo("vitoria");
 }
-
 
 }
 
 function finalizarJogo(tipo) {
 jogoFinalizado = true;
-
 
 pararCronometro();
 
@@ -298,12 +275,10 @@ if (tipo === "vitoria") {
 salvarRanking();
 mostrarResultado(tipo);
 
-
 }
 
 function iniciarCronometro() {
 clearInterval(intervaloTempo);
-
 
 segundos = 0;
 campoTempo.textContent = "00:00";
@@ -334,7 +309,6 @@ function obterRanking() {
 try {
 const ranking = JSON.parse(localStorage.getItem("rankingBatalha"));
 
-
     if (Array.isArray(ranking)) {
         return ranking;
     }
@@ -344,12 +318,10 @@ const ranking = JSON.parse(localStorage.getItem("rankingBatalha"));
     return [];
 }
 
-
 }
 
 function salvarRanking() {
 const ranking = obterRanking();
-
 
 ranking.push({
     nome: jogadorAtual,
@@ -373,12 +345,10 @@ localStorage.setItem(
 
 mostrarRanking();
 
-
 }
 
 function mostrarRanking() {
 const ranking = obterRanking();
-
 
 listaRanking.innerHTML = "";
 
@@ -410,7 +380,6 @@ for (let i = 0; i < ranking.length; i++) {
     listaRanking.appendChild(item);
 }
 
-
 }
 
 function converterTempo(tempo) {
@@ -422,12 +391,10 @@ const segundosTempo = Number(partes[1]);
 
 return (minutos * 60) + segundosTempo;
 
-
 }
 
 function mostrarImagem(celula, nomeImagem, textoAlternativo) {
 const imagem = document.createElement("img");
-
 
 imagem.src = "img/" + nomeImagem;
 imagem.alt = textoAlternativo;
@@ -436,22 +403,18 @@ imagem.classList.add("imagemCelula");
 celula.innerHTML = "";
 celula.appendChild(imagem);
 
-
 }
 
 function tocarSom(som) {
 som.currentTime = 0;
 
-
 som.play().catch(() => {});
-
 
 }
 
 function mostrarResultado(tipo) {
 telaResultado.classList.remove("escondida", "vitoria", "derrota");
 telaResultado.classList.add(tipo);
-
 
 detalhesResultado.textContent =
     "Pontuação: " + pontos +
@@ -466,7 +429,6 @@ if (tipo === "vitoria") {
 }
 
 }
-
 function esconderResultado() {
 telaResultado.classList.add("escondida");
 telaResultado.classList.remove("vitoria", "derrota");
