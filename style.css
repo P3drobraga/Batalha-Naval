@@ -1,0 +1,517 @@
+/* =========================
+   RESET
+========================= */
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* =========================
+   BODY
+========================= */
+
+body{
+    min-height: 100vh;
+
+    font-family: Arial, Helvetica, sans-serif;
+
+    background-color: #0b1d2a;
+
+    color: white;
+
+    padding: 20px;
+}
+
+/* =========================
+   HEADER
+========================= */
+
+header{
+    text-align: center;
+
+    margin-bottom: 30px;
+}
+
+header h1{
+    margin-bottom: 10px;
+
+    color: #4fc3f7;
+
+    font-size: 3rem;
+}
+
+header p{
+    margin-bottom: 10px;
+
+    color: #cfd8dc;
+}
+
+#jogador{
+    color: #4fc3f7;
+
+    font-size: 1.2rem;
+}
+
+/* =========================
+   MAIN
+========================= */
+
+main{
+    max-width: 1200px;
+
+    margin: auto;
+}
+
+/* =========================
+   PAINEL
+========================= */
+
+.painel{
+    display: flex;
+    flex-wrap: wrap;
+
+    justify-content: center;
+
+    gap: 15px;
+
+    margin-bottom: 25px;
+}
+
+.info{
+    min-width: 140px;
+
+    padding: 15px;
+
+    text-align: center;
+
+    background-color: #13293d;
+
+    border: 2px solid #1f4f75;
+    border-radius: 10px;
+}
+
+.info h3{
+    margin-bottom: 8px;
+
+    font-size: 1rem;
+}
+
+.info span{
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+/* =========================
+   TABULEIRO
+========================= */
+
+.area-jogo{
+    display: flex;
+
+    justify-content: center;
+
+    margin-bottom: 25px;
+}
+
+#tabuleiro{
+    display: grid;
+
+    width: min(100%, 672px);
+
+    grid-template-columns: repeat(10, 1fr);
+
+    gap: 4px;
+
+    padding: 15px;
+
+    background-color: #13293d;
+
+    border: 3px solid #1f4f75;
+    border-radius: 12px;
+}
+
+/* Células criadas pelo JavaScript */
+
+.celula{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    aspect-ratio: 1;
+
+    background-color: #1f4f75;
+
+    border-radius: 6px;
+
+    cursor: pointer;
+
+    font-size: 28px;
+
+    transition: transform 0.2s, background-color 0.2s;
+}
+
+.celula:hover{
+    background-color: #2f6d9e;
+
+    transform: scale(1.05);
+}
+
+.celula.aberta{
+    cursor: default;
+
+    transform: none;
+}
+
+.celula.aberta:hover{
+    background-color: #1f4f75;
+
+    transform: none;
+}
+
+/* =========================
+   MENSAGENS
+========================= */
+
+.mensagens{
+    margin-bottom: 20px;
+    padding: 20px;
+
+    background-color: #13293d;
+
+    border: 2px solid #1f4f75;
+    border-radius: 10px;
+}
+
+.mensagens h2{
+    margin-bottom: 10px;
+
+    color: #4fc3f7;
+}
+
+/* =========================
+   BOTÕES
+========================= */
+
+.controles{
+    display: flex;
+
+    justify-content: center;
+
+    gap: 15px;
+
+    margin-bottom: 25px;
+}
+
+.controles button{
+    padding: 12px 25px;
+
+    color: #0b1d2a;
+
+    font-size: 1rem;
+    font-weight: bold;
+
+    background-color: #4fc3f7;
+
+    border: none;
+    border-radius: 8px;
+
+    cursor: pointer;
+
+    transition: transform 0.2s, opacity 0.2s;
+}
+
+.controles button:hover{
+    opacity: 0.9;
+
+    transform: translateY(-2px);
+}
+
+.controles button:active{
+    transform: translateY(0);
+}
+
+/* =========================
+   ESTATÍSTICAS
+========================= */
+
+.estatisticas{
+    margin-bottom: 20px;
+    padding: 20px;
+
+    background-color: #13293d;
+
+    border: 2px solid #1f4f75;
+    border-radius: 10px;
+}
+
+.estatisticas h2{
+    margin-bottom: 15px;
+
+    color: #4fc3f7;
+}
+
+.dados{
+    display: grid;
+
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+
+    gap: 10px;
+}
+
+.dados p{
+    padding: 10px;
+
+    background-color: #1f4f75;
+
+    border-radius: 6px;
+}
+
+/* =========================
+   RANKING
+========================= */
+
+.ranking{
+    margin-bottom: 20px;
+    padding: 20px;
+
+    background-color: #13293d;
+
+    border: 2px solid #1f4f75;
+    border-radius: 10px;
+}
+
+.ranking h2{
+    margin-bottom: 15px;
+
+    color: #4fc3f7;
+}
+
+#listaRanking{
+    padding-left: 0;
+
+    list-style: none;
+}
+
+#listaRanking li{
+    margin-bottom: 8px;
+    padding: 8px 10px;
+
+    background-color: #1f4f75;
+
+    border-radius: 6px;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+footer{
+    margin-top: 30px;
+
+    text-align: center;
+
+    color: #b0bec5;
+}
+
+/* =========================
+   TELA INICIAL
+========================= */
+
+#telaInicial{
+    position: fixed;
+    inset: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 20px;
+
+    background-color: #0b1d2a;
+
+    z-index: 999;
+}
+
+.caixaNome{
+    display: flex;
+    flex-direction: column;
+
+    width: 100%;
+    max-width: 430px;
+
+    gap: 10px;
+
+    padding: 35px;
+
+    background-color: #13293d;
+
+    border: 2px solid #1f4f75;
+    border-radius: 16px;
+
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+}
+
+.caixaNome h1{
+    margin-bottom: 4px;
+
+    text-align: center;
+
+    color: #4fc3f7;
+
+    font-size: 2rem;
+}
+
+.caixaNome p{
+    margin-bottom: 12px;
+
+    text-align: center;
+
+    color: #cfd8dc;
+
+    line-height: 1.4;
+}
+
+.caixaNome label{
+    margin-top: 4px;
+
+    color: #4fc3f7;
+
+    font-size: 0.95rem;
+    font-weight: bold;
+}
+
+.caixaNome input,
+#dificuldadeInicial{
+    width: 100%;
+
+    padding: 12px;
+
+    color: white;
+
+    font-size: 1rem;
+
+    background-color: #0b1d2a;
+
+    border: 2px solid #1f4f75;
+    border-radius: 8px;
+}
+
+.caixaNome input::placeholder{
+    color: #b0bec5;
+}
+
+.caixaNome input:focus,
+#dificuldadeInicial:focus{
+    outline: none;
+
+    border-color: #4fc3f7;
+
+    box-shadow: 0 0 0 3px rgba(79, 195, 247, 0.15);
+}
+
+.caixaNome button{
+    width: 100%;
+
+    margin-top: 12px;
+    padding: 13px;
+
+    color: #0b1d2a;
+
+    font-size: 1rem;
+    font-weight: bold;
+
+    background-color: #4fc3f7;
+
+    border: none;
+    border-radius: 8px;
+
+    cursor: pointer;
+
+    transition: transform 0.2s, opacity 0.2s;
+}
+
+.caixaNome button:hover{
+    opacity: 0.9;
+
+    transform: translateY(-2px);
+}
+
+.caixaNome button:active{
+    transform: translateY(0);
+}
+
+/* =========================
+   RESPONSIVIDADE
+========================= */
+
+@media(max-width: 768px){
+
+    body{
+        padding: 15px;
+    }
+
+    header h1{
+        font-size: 2rem;
+    }
+
+    .painel{
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .info{
+        width: 100%;
+        max-width: 300px;
+    }
+
+    #tabuleiro{
+        gap: 3px;
+
+        padding: 10px;
+    }
+
+    .celula{
+        font-size: 20px;
+    }
+
+    .controles{
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .controles button{
+        width: 100%;
+        max-width: 300px;
+    }
+
+    .caixaNome{
+        padding: 28px 22px;
+    }
+
+    .caixaNome h1{
+        font-size: 1.8rem;
+    }
+}
+
+@media(max-width: 400px){
+
+    body{
+        padding: 10px;
+    }
+
+    #tabuleiro{
+        gap: 2px;
+
+        padding: 7px;
+    }
+
+    .celula{
+        font-size: 16px;
+    }
+
+    .caixaNome{
+        padding: 25px 18px;
+    }
+}

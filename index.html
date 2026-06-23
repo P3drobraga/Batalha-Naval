@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projeto Batalha Naval</title>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+
+    
+
+     <div id="telaInicial">
+
+<div class="caixaNome">
+
+    <h1>Batalha Naval</h1>
+
+    <p>Digite seu nome e escolha a dificuldade para começar.</p>
+
+    <label for="nomeJogador">Nome do jogador</label>
+
+    <input
+        type="text"
+        id="nomeJogador"
+        placeholder="Digite seu nome"
+        maxlength="20"
+        autocomplete="name"
+    >
+
+    <label for="dificuldadeInicial">Dificuldade</label>
+
+    <select id="dificuldadeInicial">
+        <option value="facil">Fácil</option>
+        <option value="medio" selected>Médio</option>
+        <option value="dificil">Difícil</option>
+    </select>
+
+    <button id="btnEntrar">
+        Jogar
+    </button>
+
+</div>
+
+</div>
+
+
+<header>
+    <h1>Batalha Naval</h1>
+
+    <p>Encontre todos os barcos e evite as bombas.</p>
+
+    <h2 id="jogador">
+        Jogador: -
+    </h2>
+</header>
+
+   
+
+    <main id="areaJogo">
+
+        <!-- Painel de informações -->
+        <section class="painel">
+
+            <div class="info">
+                <h3>Pontuação</h3>
+                <span id="pontos">0</span>
+            </div>
+
+            <div class="info">
+                <h3>Vidas</h3>
+                <span id="vidas">5</span>
+            </div>
+
+            <div class="info">
+                <h3>Tempo</h3>
+                <span id="tempo">00:00</span>
+            </div>
+
+            <div class="info">
+                <h3>Jogadas</h3>
+                <span id="jogadas">0</span>
+            </div>
+
+            <div class="info">
+                <h3>Dificuldade</h3>
+                <span id="nivelAtual">
+                 Médio
+                </span>
+            </div>
+
+        </section>
+
+        <!-- Área principal do jogo -->
+        <section class="area-jogo">
+
+            <div id="tabuleiro">
+
+                <!--
+                    As células serão criadas pelo JavaScript.
+
+                    Exemplo:
+                    <div class="celula"></div>
+                -->
+
+            </div>
+
+        </section>
+
+        <!-- Mensagens -->
+        <section class="mensagens">
+
+            <h2>Mensagem</h2>
+
+            <p id="mensagem">
+                Clique em "Novo Jogo" para começar.
+            </p>
+
+        </section>
+
+        <!-- Botões -->
+        <section class="controles">
+
+            <button id="novoJogo">
+                Novo Jogo
+            </button>
+
+            <button id="verRanking">
+                Ranking
+            </button>
+
+        </section>
+
+        <!-- Estatísticas -->
+        <section class="estatisticas">
+
+            <h2>Estatísticas</h2>
+
+            <div class="dados">
+
+                <p>
+                    Acertos:
+                    <span id="acertos">0</span>
+                </p>
+
+                <p>
+                    Erros:
+                    <span id="erros">0</span>
+                </p>
+
+                <p>
+                    Precisão:
+                    <span id="precisao">0%</span>
+                </p>
+
+                <p>
+                    Bombas Encontradas:
+                    <span id="bombas">0</span>
+                </p>
+
+                <p>
+                    Barcos Restantes:
+                    <span id="barcos">12</span>
+                </p>
+
+            </div>
+
+        </section>
+
+        <!-- Ranking -->
+        <section class="ranking">
+
+            <h2>Ranking</h2>
+
+            <ol id="listaRanking">
+
+                <!--
+                    Exemplo:
+
+                    <li>Pedro - 250 pontos</li>
+                -->
+
+            </ol>
+
+        </section>
+
+    </main>
+
+    <footer>
+        <p>Batalha Naval - Pedro Braga, Ananda Gabriela e Bruno Frazão</p>
+    </footer>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
