@@ -1,198 +1,172 @@
 <!DOCTYPE html>
+
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Projeto Batalha Naval</title>
 
-    <link rel="stylesheet" href="style.css">
+
+<link rel="stylesheet" href="style.css">
+
 
 </head>
 <body>
 
-    
 
-     <div id="telaInicial">
+<div id="telaInicial">
+    <div class="caixaNome">
+        <h1>Batalha Naval</h1>
 
-<div class="caixaNome">
+        <p>Digite seu nome e escolha a dificuldade para começar.</p>
 
-    <h1>Batalha Naval</h1>
+        <label for="nomeJogador">Nome do jogador</label>
 
-    <p>Digite seu nome e escolha a dificuldade para começar.</p>
+        <input
+            type="text"
+            id="nomeJogador"
+            placeholder="Digite seu nome"
+            maxlength="20"
+            autocomplete="name"
+        >
 
-    <label for="nomeJogador">Nome do jogador</label>
+        <label for="dificuldadeInicial">Dificuldade</label>
 
-    <input
-        type="text"
-        id="nomeJogador"
-        placeholder="Digite seu nome"
-        maxlength="20"
-        autocomplete="name"
-    >
+        <select id="dificuldadeInicial">
+            <option value="facil">Fácil</option>
+            <option value="medio" selected>Médio</option>
+            <option value="dificil">Difícil</option>
+        </select>
 
-    <label for="dificuldadeInicial">Dificuldade</label>
-
-    <select id="dificuldadeInicial">
-        <option value="facil">Fácil</option>
-        <option value="medio" selected>Médio</option>
-        <option value="dificil">Difícil</option>
-    </select>
-
-    <button id="btnEntrar">
-        Jogar
-    </button>
-
+        <button type="button" id="btnEntrar">
+            Jogar
+        </button>
+    </div>
 </div>
-
-</div>
-
 
 <header>
     <h1>Batalha Naval</h1>
 
     <p>Encontre todos os barcos e evite as bombas.</p>
 
-    <h2 id="jogador">
-        Jogador: -
-    </h2>
+    <h2 id="jogador">Jogador: -</h2>
 </header>
 
-   
+<main id="areaJogo">
 
-    <main id="areaJogo">
+    <section class="painel">
+        <div class="info">
+            <h3>Pontuação</h3>
+            <span id="pontos">0</span>
+        </div>
 
-        <!-- Painel de informações -->
-        <section class="painel">
+        <div class="info">
+            <h3>Vidas</h3>
+            <span id="vidas">5</span>
+        </div>
 
-            <div class="info">
-                <h3>Pontuação</h3>
-                <span id="pontos">0</span>
-            </div>
+        <div class="info">
+            <h3>Tempo</h3>
+            <span id="tempo">00:00</span>
+        </div>
 
-            <div class="info">
-                <h3>Vidas</h3>
-                <span id="vidas">5</span>
-            </div>
+        <div class="info">
+            <h3>Jogadas</h3>
+            <span id="jogadas">0</span>
+        </div>
 
-            <div class="info">
-                <h3>Tempo</h3>
-                <span id="tempo">00:00</span>
-            </div>
+        <div class="info">
+            <h3>Dificuldade</h3>
+            <span id="nivelAtual">Médio</span>
+        </div>
+    </section>
 
-            <div class="info">
-                <h3>Jogadas</h3>
-                <span id="jogadas">0</span>
-            </div>
+    <div class="layoutJogo">
 
-            <div class="info">
-                <h3>Dificuldade</h3>
-                <span id="nivelAtual">
-                 Médio
-                </span>
-            </div>
-
-        </section>
-
-        <!-- Área principal do jogo -->
         <section class="area-jogo">
-
-            <div id="tabuleiro">
-
-                <!--
-                    As células serão criadas pelo JavaScript.
-
-                    Exemplo:
-                    <div class="celula"></div>
-                -->
-
-            </div>
-
+            <div id="tabuleiro"></div>
         </section>
 
-        <!-- Mensagens -->
-        <section class="mensagens">
+        <aside class="lateral">
 
-            <h2>Mensagem</h2>
+            <section class="mensagens">
+                <h2>Status do Jogo</h2>
 
-            <p id="mensagem">
-                Clique em "Novo Jogo" para começar.
-            </p>
-
-        </section>
-
-        <!-- Botões -->
-        <section class="controles">
-
-            <button id="novoJogo">
-                Novo Jogo
-            </button>
-
-            <button id="verRanking">
-                Ranking
-            </button>
-
-        </section>
-
-        <!-- Estatísticas -->
-        <section class="estatisticas">
-
-            <h2>Estatísticas</h2>
-
-            <div class="dados">
-
-                <p>
-                    Acertos:
-                    <span id="acertos">0</span>
+                <p id="mensagem">
+                    Clique em "Novo Jogo" para começar.
                 </p>
+            </section>
 
-                <p>
-                    Erros:
-                    <span id="erros">0</span>
-                </p>
+            <section class="controles">
+                <button type="button" id="novoJogo">
+                    Novo Jogo
+                </button>
 
-                <p>
-                    Precisão:
-                    <span id="precisao">0%</span>
-                </p>
+                <button type="button" id="verRanking">
+                    Ranking
+                </button>
+            </section>
 
-                <p>
-                    Bombas Encontradas:
-                    <span id="bombas">0</span>
-                </p>
+            <section class="estatisticas">
+                <h2>Estatísticas</h2>
 
-                <p>
-                    Barcos Restantes:
-                    <span id="barcos">12</span>
-                </p>
+                <div class="dados">
+                    <p>
+                        Acertos:
+                        <span id="acertos">0</span>
+                    </p>
 
-            </div>
+                    <p>
+                        Erros:
+                        <span id="erros">0</span>
+                    </p>
 
-        </section>
+                    <p>
+                        Precisão:
+                        <span id="precisao">0%</span>
+                    </p>
 
-        <!-- Ranking -->
-        <section class="ranking">
+                    <p>
+                        Bombas Encontradas:
+                        <span id="bombas">0</span>
+                    </p>
 
-            <h2>Ranking</h2>
+                    <p>
+                        Barcos Restantes:
+                        <span id="barcos">12</span>
+                    </p>
+                </div>
+            </section>
 
-            <ol id="listaRanking">
+            <section class="ranking">
+                <h2>Ranking</h2>
 
-                <!--
-                    Exemplo:
+                <ol id="listaRanking"></ol>
+            </section>
 
-                    <li>Pedro - 250 pontos</li>
-                -->
+        </aside>
 
-            </ol>
+    </div>
+</main>
 
-        </section>
+<footer>
+    <p>Batalha Naval - Pedro Braga, Ananda Gabriela e Bruno Frazão</p>
+</footer>
 
-    </main>
+<div id="telaResultado" class="escondida">
+    <div class="caixaResultado">
+        <h2 id="tituloResultado"></h2>
 
-    <footer>
-        <p>Batalha Naval - Pedro Braga, Ananda Gabriela e Bruno Frazão</p>
-    </footer>
+        <p id="textoResultado"></p>
 
-    <script src="script.js"></script>
+        <p id="detalhesResultado"></p>
 
+        <button type="button" id="btnJogarNovamente">
+            Jogar Novamente
+        </button>
+    </div>
+</div>
+
+<script src="script.js"></script>
 </body>
 </html>
