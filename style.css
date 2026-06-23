@@ -197,8 +197,7 @@ font-size: 0.95rem;
 
 .controles{
 display: grid;
-grid-template-columns: 1fr 1fr;
-gap: 10px;
+grid-template-columns: 1fr;
 }
 
 .controles button,
@@ -218,19 +217,6 @@ font-weight: bold;
 
 cursor: pointer;
 
-
-}
-
-.controles button:hover,
-.caixaNome button:hover,
-#btnJogarNovamente:hover{
-    background: #d0d0d0;
-}
-
-.controles button:active,
-.caixaNome button:active,
-#btnJogarNovamente:active{
-    transform: translateY(1px);
 }
 
 .caixaNome button,

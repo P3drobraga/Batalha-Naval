@@ -3,14 +3,13 @@ const nomeJogador = document.getElementById("nomeJogador");
 const dificuldadeInicial = document.getElementById("dificuldadeInicial");
 const btnEntrar = document.getElementById("btnEntrar");
 const btnNovoJogo = document.getElementById("novoJogo");
-const btnRanking = document.getElementById("verRanking");
 const btnJogarNovamente = document.getElementById("btnJogarNovamente");
 
 const nomeExibido = document.getElementById("jogador");
 const nivelAtual = document.getElementById("nivelAtual");
 const tabuleiro = document.getElementById("tabuleiro");
 const mensagem = document.getElementById("mensagem");
-const areaRanking = document.querySelector(".ranking");
+
 const listaRanking = document.getElementById("listaRanking");
 
 const campoPontos = document.getElementById("pontos");
@@ -82,12 +81,6 @@ btnEntrar.addEventListener("click", iniciarJogo);
 btnNovoJogo.addEventListener("click", novoJogo);
 btnJogarNovamente.addEventListener("click", novoJogo);
 
-btnRanking.addEventListener("click", () => {
-    areaRanking.scrollIntoView({
-        behavior: "smooth",
-        block: "start"
-    });
-});
 
 window.addEventListener("load", () => {
     const nomeSalvo = localStorage.getItem("nomeJogador");
