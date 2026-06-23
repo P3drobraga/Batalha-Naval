@@ -223,12 +223,14 @@ cursor: pointer;
 
 .controles button:hover,
 .caixaNome button:hover,
-#btnJogarNovamente:hover
+#btnJogarNovamente:hover{
+    background: #d0d0d0;
+}
 
 .controles button:active,
 .caixaNome button:active,
 #btnJogarNovamente:active{
-transform: translateY(1px);
+    transform: translateY(1px);
 }
 
 .caixaNome button,
